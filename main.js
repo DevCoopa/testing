@@ -8,5 +8,5 @@ canvas.width = canvas_width;
 canvas.height = canvas_height;
 
 c.fillStyle("#6EEDFF")
-c.draw(0, 0, canvas_width, canvas_height);
+c.fillRect(0, 0, canvas_width, canvas_height);
 c.fill();
