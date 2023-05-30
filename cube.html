@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Three.js Cube with Textures</title>
+    <style>
+      body { margin: 0; }
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script>
+      // Set up the scene, camera, and renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Create a texture loader
+      const textureLoader = new THREE.TextureLoader();
+
+      // Load textures for each face of the cube
+      const textures = [
+        textureLoader.load('texture.jpg'),
+        textureLoader.load('texture.jpg'),
+        textureLoader.load('texture.jpg'),
+        textureLoader.load('texture.jpg'),
+        textureLoader.load('texture.jpg'),
+        textureLoader.load('texture.jpg')
+      ];
+
+      // Create materials using the loaded textures
+      const materials = textures.map(texture => new THREE.MeshBasicMaterial({ map: texture }));
+
+      // Create a geometry for the cube
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+      // Create a mesh with the cube geometry and materials
+      const cube = new THREE.Mesh(geometry, materials);
+
+      // Add the cube to the scene
+      scene.add(cube);
+
+      // Position the camera
+      camera.position.z = 5;
+
+      // Render the scene
+      function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      }
+      animate();
+    </script>
+  </body>
+</html>
