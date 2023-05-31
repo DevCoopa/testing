@@ -8,5 +8,15 @@
   <body>
     <h1>Index</h1>
     <a href="cube.html">Cube thingy</a>
+    <canvas id="canvas" style="border: 2px solid black;"></canvas>
+    <script>
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+      
+      canvas.width = window.innerWidth - 20;
+      canvas.height = window.innerHeight - 20;
+      
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    </script>
   </body>
 </html>
